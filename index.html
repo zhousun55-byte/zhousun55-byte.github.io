@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ZHOU · AI 应用开发作品集</title>
-<meta name="description" content="多模型 AI 编程协作工具开发者 ZHOU 的作品集：接力台 RelayDesk、council 多模型会审插件、dsh-postman。">
-<meta property="og:title" content="ZHOU · AI 应用开发作品集">
-<meta property="og:description" content="让多个 AI 模型协同干活的工具：接力、投票、交叉评审。">
+<title>ZHOU · 作品集</title>
+<meta name="description" content="ZHOU 的作品集：2026 年以来和 AI 工具一起做的 9 个项目，包括多模型协作平台、MCP 插件、交易读盘指标、知识库问答和模型评测。">
+<meta property="og:title" content="ZHOU · 作品集">
+<meta property="og:description" content="把模型当成一个团队来用：分工、给对上下文、自动验收、先测再选。">
 <meta property="og:image" content="https://zhousun55-byte.github.io/assets/relay.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='7' fill='%23d93a2b'/%3E%3C/svg%3E">
 <style>
@@ -26,7 +26,7 @@
   --hair: #2b2b29; --fog: #222220; --dot: #ef5a49; --dotgrid: #262624; color-scheme: dark;
 }
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: 72px; }
 body {
   margin: 0; background: var(--paper); color: var(--ink);
   background-image: radial-gradient(var(--dotgrid) 1px, transparent 1px); background-size: 18px 18px;
@@ -43,11 +43,10 @@ nav .links { display: flex; gap: 18px; margin-left: auto; }
 nav .links a { text-decoration: none; color: var(--ink-2); }
 nav .links a:hover { color: var(--ink); }
 header { padding: 96px 0 72px; }
-.eyebrow { font-size: 13px; letter-spacing: .14em; color: var(--ink-3); text-transform: uppercase; margin: 0 0 18px; }
+.eyebrow { font-size: 13px; letter-spacing: .14em; color: var(--ink-3); margin: 0 0 18px; }
 h1 { font-size: clamp(34px, 6vw, 58px); line-height: 1.15; margin: 0 0 22px; letter-spacing: -.01em; }
-h1 em { font-style: normal; position: relative; white-space: nowrap; }
-h1 em { box-shadow: inset 0 -.18em 0 color-mix(in srgb, var(--dot) 28%, transparent); }
-.lead { font-size: 18px; color: var(--ink-2); max-width: 660px; margin: 0 0 30px; }
+h1 em { font-style: normal; white-space: nowrap; box-shadow: inset 0 -.18em 0 color-mix(in srgb, var(--dot) 28%, transparent); }
+.lead { font-size: 18px; color: var(--ink-2); max-width: 680px; margin: 0 0 30px; }
 .stats { display: flex; flex-wrap: wrap; gap: 12px 36px; margin: 0 0 34px; padding: 0; list-style: none; }
 .stats b { display: block; font-size: 28px; line-height: 1.2; font-variant-numeric: tabular-nums; }
 .stats span { font-size: 13px; color: var(--ink-3); }
@@ -56,9 +55,19 @@ h1 em { box-shadow: inset 0 -.18em 0 color-mix(in srgb, var(--dot) 28%, transpar
 .btn.primary { background: var(--ink); color: var(--paper); }
 .btn:not(.primary) { background: var(--card); }
 section { padding: 64px 0; border-top: 1px solid var(--hair); }
-h2 { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 30px; font-weight: 600; }
-.proj { display: grid; gap: 26px; margin-bottom: 72px; }
-.proj:last-child { margin-bottom: 0; }
+h2 { font-size: 13px; letter-spacing: .14em; color: var(--ink-3); margin: 0 0 30px; font-weight: 600; }
+.group-title { font-size: 15px; font-weight: 600; margin: 56px 0 18px; display: flex; align-items: center; gap: 10px; }
+.group-title::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--dot); }
+.group-title:first-of-type { margin-top: 0; }
+
+.approach { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; counter-reset: a; }
+.approach li { display: grid; grid-template-columns: 170px 1fr; gap: 20px; padding: 18px 0; border-bottom: 1px solid var(--hair); counter-increment: a; }
+.approach li:first-child { padding-top: 0; }
+.approach b { font-size: 16px; }
+.approach b::before { content: "0" counter(a); color: var(--ink-3); font-weight: 400; font-size: 13px; margin-right: 10px; font-variant-numeric: tabular-nums; }
+.approach span { color: var(--ink-2); font-size: 15px; }
+
+.proj { display: grid; gap: 26px; margin-bottom: 26px; }
 .proj h3 { font-size: 28px; line-height: 1.3; margin: 0; }
 .proj h3 small { display: block; font-size: 15px; font-weight: 400; color: var(--ink-3); margin-top: 6px; }
 .proj p { margin: 0; color: var(--ink-2); max-width: 720px; }
@@ -72,18 +81,26 @@ h2 { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: v
 .feats li { background: var(--card); border: 1px solid var(--hair); border-radius: 10px; padding: 16px 18px; }
 .feats b { display: block; margin-bottom: 4px; }
 .feats span { font-size: 14.5px; color: var(--ink-2); }
-.meta { display: flex; flex-wrap: wrap; gap: 10px 22px; font-size: 14px; color: var(--ink-3); }
+.meta { display: flex; flex-wrap: wrap; gap: 10px 22px; font-size: 14px; color: var(--ink-3); margin-top: auto; }
 .meta a { color: var(--ink); }
-.small-proj { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-.card { background: var(--card); border: 1px solid var(--hair); border-radius: 12px; padding: 24px; display: grid; gap: 14px; align-content: start; }
-.card h3 { font-size: 21px; margin: 0; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 18px; }
+.card { background: var(--card); border: 1px solid var(--hair); border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 14px; }
+.card h3 { font-size: 21px; line-height: 1.35; margin: 0; }
+.card h3 small { display: block; font-size: 14px; font-weight: 400; color: var(--ink-3); margin-top: 4px; }
 .card p { margin: 0; color: var(--ink-2); font-size: 15px; }
+.card .num { font-size: 14px; color: var(--ink); background: var(--fog); border-radius: 8px; padding: 10px 12px; font-variant-numeric: tabular-nums; }
+
+.timeline { list-style: none; margin: 0; padding: 0; }
+.timeline li { display: grid; grid-template-columns: 120px 1fr; gap: 20px; padding: 14px 0; border-bottom: 1px solid var(--hair); }
+.timeline time { color: var(--ink-3); font-size: 14px; font-variant-numeric: tabular-nums; padding-top: 1px; }
+.timeline span { color: var(--ink-2); font-size: 15px; }
+
 table { width: 100%; border-collapse: collapse; font-size: 15px; }
 td { padding: 14px 0; border-bottom: 1px solid var(--hair); vertical-align: top; }
 td:last-child { text-align: right; white-space: nowrap; padding-left: 16px; color: var(--ink-3); font-size: 14px; }
 td .ok { color: var(--ink); }
 td .ok::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #2f8f5b; margin-right: 7px; vertical-align: 2px; }
-.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 24px; }
 .skills h4 { margin: 0 0 8px; font-size: 15px; }
 .skills p { margin: 0; color: var(--ink-2); font-size: 14.5px; }
 footer { padding: 56px 0 72px; border-top: 1px solid var(--hair); }
@@ -96,9 +113,10 @@ footer p { margin: 0 0 22px; color: var(--ink-2); }
   nav .links { display: none; }
   nav .theme { margin-left: auto; }
   header { padding: 56px 0 48px; }
-  .shots, .small-proj, .feats { grid-template-columns: 1fr; }
+  .feats { grid-template-columns: 1fr; }
   section { padding: 48px 0; }
   .proj h3 { font-size: 24px; }
+  .approach li, .timeline li { grid-template-columns: 1fr; gap: 4px; }
   td:last-child { padding-left: 10px; }
 }
 </style>
@@ -108,9 +126,9 @@ footer p { margin: 0 0 22px; color: var(--ink-2); }
   <div class="wrap">
     <a class="me" href="#top"><i></i>ZHOU</a>
     <div class="links">
-      <a href="#projects">项目</a>
-      <a href="#oss">开源贡献</a>
-      <a href="#skills">技能</a>
+      <a href="#approach">方法</a>
+      <a href="#works">作品</a>
+      <a href="#timeline">时间线</a>
       <a href="#contact">联系</a>
     </div>
     <button class="theme" id="theme" aria-label="切换深浅色">◐</button>
@@ -119,55 +137,129 @@ footer p { margin: 0 0 22px; color: var(--ink-2); }
 
 <main class="wrap" id="top">
   <header>
-    <p class="eyebrow">AI 应用开发 · 开发者工具</p>
-    <h1>做让多个 AI 模型<br><em>协同干活</em>的工具</h1>
-    <p class="lead">我用 TypeScript 和 Node.js 把 Claude Code、Codex、DeepSeek 这些 AI 编程工具接在一起：额度用完自动换人接力，多个模型匿名投票、交叉评审，弱模型干活、强模型把关。</p>
+    <p class="eyebrow">AI 应用开发 · 作品集</p>
+    <h1>把模型当成<br><em>一个团队</em>来用</h1>
+    <p class="lead">2026 年 7 月以来，我和 Claude Code、Codex、Kimi 等 AI 工具一起做了 9 个项目：多模型协作平台、MCP 插件、交易读盘指标、知识库问答、模型评测，也有给摄影师做的网站。我负责把问题想清楚、写出能验收的标准、决定哪一步交给哪个模型，最后用测试和对照实验确认结果靠得住。</p>
     <ul class="stats">
-      <li><b>2.5 万行</b><span>接力台源码（TS / JS）</span></li>
-      <li><b>191 + 25</b><span>两个项目的自动化测试</span></li>
-      <li><b>3</b><span>独立项目</span></li>
-      <li><b>2</b><span>已合并的开源 PR</span></li>
+      <li><b>9</b><span>个项目</span></li>
+      <li><b>900+</b><span>次提交</span></li>
+      <li><b>216</b><span>项自动化测试</span></li>
+      <li><b>2</b><span>个已合并的开源 PR</span></li>
     </ul>
     <div class="cta">
-      <a class="btn primary" href="#projects">看项目</a>
-      <a class="btn" href="https://github.com/zhousun55-byte">GitHub 主页 ↗</a>
+      <a class="btn primary" href="#works">看作品</a>
+      <a class="btn" href="https://github.com/zhousun55-byte">GitHub ↗</a>
     </div>
   </header>
 
-  <section id="projects">
-    <h2>代表项目</h2>
+  <section id="approach">
+    <h2>我怎么用 AI</h2>
+    <ol class="approach">
+      <li><b>按长处分工</b><span>强模型做规划和复核，便宜的模型照着执行；拿不准的决定，让几家模型匿名各出方案、互相投票。接力台和 council 都是从这个想法长出来的。</span></li>
+      <li><b>给对上下文</b><span>模型看到什么，就会答成什么样。知识库问答按定位表只读相关的一到三页，不把整个库塞进去；换一个模型接手时，带交接单和对话主线，不带全部历史。</span></li>
+      <li><b>不轻信「做完了」</b><span>每个项目都配能自动跑的验收。接力台有 191 项测试，安全相关的改动逐处做变异检查；K线阅读用体检脚本核对说明文档里的每个参数和代码是否一致。</span></li>
+      <li><b>先测再选</b><span>选模型之前，先用自己的真实数据做一个小基准：固定随机种子，去掉会泄露答案的字段，结果能复现再下结论。</span></li>
+      <li><b>守住边界</b><span>密钥只记环境变量名，发给模型前先脱敏；隐私数据只在本机处理，交给模型的只有统计结果。</span></li>
+    </ol>
+  </section>
 
+  <section id="works">
+    <h2>作品</h2>
+
+    <h3 class="group-title">多模型协作</h3>
     <article class="proj">
-      <h3>RelayDesk · 接力台<small>多模型编程协作平台 · 独立设计与开发</small></h3>
-      <p>用 AI 写代码时，额度会用完，模型会卡住，说「做完了」也没法核实。接力台把一次开发拆成一棒一棒：一个 AI 停下，下一个带着交接单接着做；每一棒都有文件快照，可以复核，也可以退回。</p>
+      <h3>RelayDesk · 接力台<small>多模型编程协作平台 · 2026.10 至今</small></h3>
+      <p>用 AI 写代码，额度会用完，模型会卡住，它说「做完了」也没法核实。接力台把一次开发拆成一棒一棒：一个模型停下，下一个带着交接单接着做；每一棒都留文件快照，可以复核，也可以退回。</p>
       <div class="shots">
-        <figure class="shot"><img src="assets/relay.png" alt="接力台的接力页：任务清单和两棒交接记录" loading="lazy"><figcaption>接力页：任务清单打勾进度，每一棒谁做的、改了什么、待不待复核</figcaption></figure>
+        <figure class="shot"><img src="assets/relay.png" alt="接力台的接力页：任务清单和两棒交接记录" loading="lazy"><figcaption>接力页：任务清单进度，每一棒谁做的、改了什么、是否待复核</figcaption></figure>
         <figure class="shot"><img src="assets/vote.png" alt="接力台的群聊投票：三个方案的票数和主席汇总" loading="lazy"><figcaption>群聊投票：方案匿名互投，强模型当主席写汇总，采纳后写进任务约定</figcaption></figure>
       </div>
       <ul class="feats">
-        <li><b>换 Agent 继续</b><span>读取 Claude Code / Codex 的本地会话，还原对话主线，带着上下文交给另一个模型接手</span></li>
-        <li><b>强弱模型分工</b><span>强模型拆任务、弱模型执行、强模型复核；额度用完自动换人，失败一键退回快照</span></li>
+        <li><b>换模型继续</b><span>读取 Claude Code / Codex 的本地会话，还原对话主线，带着上下文交给另一个模型接手</span></li>
+        <li><b>强弱分工</b><span>强模型拆任务、弱模型执行、强模型复核；额度用完自动换人，失败可退回任意一棒的快照</span></li>
         <li><b>群聊决策</b><span>多个模型匿名出方案、互投（不能投自己），主席汇总后写进约定，之后每一棒都遵守</span></li>
-        <li><b>安全设计</b><span>项目内容按不可信处理：检查命令需本机确认、拒绝符号链接越界写入、发给模型前抹掉密钥</span></li>
+        <li><b>安全设计</b><span>项目内容一律当作不可信：检查命令要本机确认，拒绝借符号链接写到项目外，发给模型前抹掉密钥</span></li>
       </ul>
-      <ul class="tags"><li>TypeScript</li><li>Node.js</li><li>本地 HTTP 服务</li><li>原生 JS 网页</li><li>Git 快照</li><li>中英双语</li></ul>
-      <div class="meta"><span>源码私有，面试可现场演示</span><a href="https://github.com/zhousun55-byte/zhousun55-byte/blob/main/projects/relaydesk.md">设计与实现说明 ↗</a><span>截图为演示数据</span></div>
+      <ul class="tags"><li>TypeScript</li><li>Node.js</li><li>本地 HTTP 服务</li><li>191 项测试</li><li>中英双语界面</li></ul>
+      <div class="meta"><span>源码私有，面试可现场演示</span><a href="https://github.com/zhousun55-byte/zhousun55-byte/blob/main/projects/relaydesk.md">设计说明 ↗</a><span>截图为演示数据</span></div>
     </article>
 
-    <div class="small-proj">
+    <div class="cards">
       <article class="card">
-        <h3>council · 多模型会审插件</h3>
-        <p>给 magpie 写的 MCP 工具：几个模型同问一个问题、匿名投票，或请另一家的模型评审代码。零配置，每个模型走自己的原生接口；按故障类型自动冷却、慢模型自动找替身。</p>
-        <ul class="tags"><li>JavaScript</li><li>MCP</li><li>Bun 测试 25 项</li><li>CI</li></ul>
+        <h3>council<small>多模型会审插件（MCP）· 2026.11</small></h3>
+        <p>给 magpie 写的 MCP 工具：几个模型同问一个问题、匿名投票，或请另一家的模型评审代码。每个模型走自己的原生接口；按故障类型自动冷却，慢的模型自动找替身。</p>
+        <ul class="tags"><li>JavaScript</li><li>MCP</li><li>25 项测试</li><li>CI</li></ul>
         <div class="meta"><a href="https://github.com/zhousun55-byte/magpie-council">源码 ↗</a><a href="https://github.com/magpie-community/plugins/pull/646">上游 PR #646 ↗</a></div>
       </article>
+    </div>
+
+    <h3 class="group-title">交易研究</h3>
+    <div class="cards">
       <article class="card">
-        <h3>dsh-postman · 文件投递插件</h3>
-        <p>在 DeepSeek Harness 会话里选文件或文件夹：图片走原生消息附件，文本提取预览写进草稿，其他文件给出路径。已被两份生态目录收录。</p>
-        <ul class="tags"><li>JavaScript</li><li>Node.js</li><li>浏览器扩展接口</li></ul>
-        <div class="meta"><a href="https://github.com/zhousun55-byte/dsh-postman">源码 ↗</a></div>
+        <h3>K线阅读<small>TradingView 读盘指标 · 2026.09 至今</small></h3>
+        <p>按 Al Brooks 价格行为学把图表读成一张面板：大级别谁在控制、现在是趋势还是区间、有什么形态、刚收盘那根说明什么，以及止损、止盈和仓位。AI 写的说明文档很容易和代码对不上，所以配了十几个体检脚本，自动核对文档里的参数、默认值和资源占用；另有脚本通过 Chrome DevTools 协议驱动 TradingView 逐根回放验证。</p>
+        <div class="num">681 次提交 · Pine 脚本 2983 行 · 15 个校验脚本</div>
+        <ul class="tags"><li>Pine Script</li><li>Python</li><li>Chrome DevTools 协议</li></ul>
+        <div class="meta"><span>私有项目</span><span>技术分析工具，不构成投资建议</span></div>
+      </article>
+      <article class="card">
+        <h3>交易知识库与问答技能<small>Obsidian + Claude Code Skills · 2026.07 至今</small></h3>
+        <p>把交易书籍、课程和学术研究整理成知识库，每条结论标注证据等级（从 A 硬实证到 D 已证伪）。在库上写了两个技能：一个按问题直接定位到对应的一到三页再回答，需要时联网核验；一个定期检查收录的 YouTube 和 B 站来源有没有新内容，列出候选，由我决定收不收。</p>
+        <div class="num">243 次提交 · 证据分 A–D 四级</div>
+        <ul class="tags"><li>Obsidian</li><li>Claude Code Skills</li><li>检索设计</li><li>Python</li></ul>
+        <div class="meta"><span>私有项目</span></div>
       </article>
     </div>
+
+    <h3 class="group-title">评测与数据</h3>
+    <div class="cards">
+      <article class="card">
+        <h3>Jev 中文判别基准<small>模型评测 · 2026.09</small></h3>
+        <p>想用 TypeSafe 的 Jev 小模型给知识库自动归类，先测它的中文能力。标准答案直接取自人工整理好的目录结构；喂给模型的只有正文，因为文件名里带着作者名，等于送答案。</p>
+        <div class="num">57 篇真实笔记：四大类归类 81%，区分「讲人」还是「讲概念」96%</div>
+        <ul class="tags"><li>Python</li><li>评测设计</li><li>结构化输出</li></ul>
+        <div class="meta"><span>私有项目</span></div>
+      </article>
+      <article class="card">
+        <h3>个人语料蒸馏<small>AI 分身 · 2026.07</small></h3>
+        <p>从自己多年的聊天导出里只取本人发出的消息，按频率统计口头禅、句式和这几年的变化，写成一份「AI 分身」设定。效果用盲测检验：拿一条当年真实收到的消息让分身回答，再和我当时的回复对照，不像的地方回头改设定。</p>
+        <div class="num">聊天原文只在本机处理，交给模型的只有统计报告和过滤后的语录</div>
+        <ul class="tags"><li>Python</li><li>数据清洗</li><li>盲测评估</li><li>隐私处理</li></ul>
+        <div class="meta"><span>数据不公开</span></div>
+      </article>
+    </div>
+
+    <h3 class="group-title">插件、工具与网站</h3>
+    <div class="cards">
+      <article class="card">
+        <h3>dsh-postman<small>DeepSeek Harness 插件 · 2026.08</small></h3>
+        <p>在 DeepSeek Harness 会话里直接选文件或文件夹：图片作为消息附件，文本写进草稿，文件夹按目录结构投递。已被两份生态目录收录。</p>
+        <ul class="tags"><li>JavaScript</li><li>Node.js</li></ul>
+        <div class="meta"><a href="https://github.com/zhousun55-byte/dsh-postman">源码 ↗</a></div>
+      </article>
+      <article class="card">
+        <h3>摄影作品集网站<small>婚礼摄影师网站 · 2026.09</small></h3>
+        <p>给婚礼摄影师做的咨询用网站，让客户快速看风格、建立信任、发起咨询。为了国内访问，图片和字体全部本地化，去掉了 Google Fonts 依赖；附交付文档和一键打包脚本。</p>
+        <ul class="tags"><li>React</li><li>TypeScript</li><li>Vite</li><li>GSAP</li><li>Kimi</li></ul>
+        <div class="meta"><span>演示版，摄影师信息不公开</span></div>
+      </article>
+      <article class="card">
+        <h3>Cursor 中文化整合<small>桌面工具 · 2026.09</small></h3>
+        <p>把两个开源的 Cursor 汉化工具合成一套：先套用一个的完整词典，再用另一个补上新版界面；改动前自动备份，改完关掉自动更新，免得被覆盖。</p>
+        <ul class="tags"><li>Python</li></ul>
+        <div class="meta"><span>本机工具</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="timeline">
+    <h2>时间线</h2>
+    <ol class="timeline">
+      <li><time>2026.07</time><span>个人语料蒸馏；交易知识库开建</span></li>
+      <li><time>2026.08</time><span>dsh-postman 发布，被两份生态目录收录</span></li>
+      <li><time>2026.09</time><span>K线阅读开工；摄影作品集网站；Jev 中文评测；Cursor 中文化整合</span></li>
+      <li><time>2026.10–11</time><span>接力台；council 拆成独立仓库，提交到上游</span></li>
+    </ol>
   </section>
 
   <section id="oss">
@@ -180,18 +272,18 @@ footer p { margin: 0 0 22px; color: var(--ink-2); }
   </section>
 
   <section id="skills">
-    <h2>技能</h2>
+    <h2>工具与能力</h2>
     <div class="skills">
-      <div><h4>LLM 应用</h4><p>多模型调度与降级、Agent 会话解析与接续、提示词设计、模型投票与交叉评审、MCP 工具开发</p></div>
-      <div><h4>工程</h4><p>TypeScript、Node.js、本地 HTTP 服务、命令行工具、Git 快照、原生 JavaScript / CSS 前端</p></div>
-      <div><h4>质量与安全</h4><p>假工具驱动的集成测试、变异检查、不可信输入处理、密钥脱敏、路径与链接越界防护</p></div>
-      <div><h4>工具链</h4><p>Claude Code、Codex、DeepSeek Harness、magpie、GitHub Actions、Bun</p></div>
+      <div><h4>模型与 Agent</h4><p>Claude Code、Codex、Kimi、DeepSeek Harness、magpie、MCP、Claude Code Skills</p></div>
+      <div><h4>方法</h4><p>多模型分工与交叉评审、上下文与检索设计、规格与提示词编写、评测基准设计</p></div>
+      <div><h4>工程</h4><p>TypeScript、Node.js、Python、Pine Script、React、Git、GitHub Actions</p></div>
+      <div><h4>质量与安全</h4><p>自动化测试、变异检查、文档与代码对账、密钥脱敏、隐私数据本地处理</p></div>
     </div>
   </section>
 
   <footer id="contact">
     <h2>联系</h2>
-    <p>正在寻找 AI 应用开发 / AI 工具开发岗位。欢迎通过 GitHub 联系我，也可以约时间现场演示接力台。</p>
+    <p>正在找 AI 应用开发、AI 工具开发方向的工作。可以在 GitHub 上联系我，也可以约时间现场演示接力台。</p>
     <div class="cta"><a class="btn primary" href="https://github.com/zhousun55-byte">GitHub @zhousun55-byte ↗</a></div>
     <p class="fine">© 2026 ZHOU</p>
   </footer>
