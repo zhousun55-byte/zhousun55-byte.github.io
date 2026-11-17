@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZHOU · AI 应用开发作品集</title>
+<meta name="description" content="多模型 AI 编程协作工具开发者 ZHOU 的作品集：接力台 RelayDesk、council 多模型会审插件、dsh-postman。">
+<meta property="og:title" content="ZHOU · AI 应用开发作品集">
+<meta property="og:description" content="让多个 AI 模型协同干活的工具：接力、投票、交叉评审。">
+<meta property="og:image" content="https://zhousun55-byte.github.io/assets/relay.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='7' fill='%23d93a2b'/%3E%3C/svg%3E">
+<style>
+:root {
+  --paper: #fafaf8; --card: #ffffff; --ink: #141414; --ink-2: #4a4a48; --ink-3: #8a8a86;
+  --hair: #e6e5e0; --fog: #f1f0ec; --dot: #d93a2b; --dotgrid: #e3e2dc;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #121212; --card: #1a1a1a; --ink: #f2f2ef; --ink-2: #bdbdb8; --ink-3: #85857f;
+    --hair: #2b2b29; --fog: #222220; --dot: #ef5a49; --dotgrid: #262624; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #121212; --card: #1a1a1a; --ink: #f2f2ef; --ink-2: #bdbdb8; --ink-3: #85857f;
+  --hair: #2b2b29; --fog: #222220; --dot: #ef5a49; --dotgrid: #262624; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  background-image: radial-gradient(var(--dotgrid) 1px, transparent 1px); background-size: 18px 18px;
+  font: 16px/1.7 -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", sans-serif;
+}
+a { color: inherit; text-underline-offset: 3px; text-decoration-color: var(--ink-3); }
+a:hover { text-decoration-color: var(--dot); }
+.wrap { max-width: 980px; margin: 0 auto; padding: 0 24px; }
+nav { position: sticky; top: 0; z-index: 5; backdrop-filter: blur(10px); background: color-mix(in srgb, var(--paper) 82%, transparent); border-bottom: 1px solid var(--hair); }
+nav .wrap { display: flex; align-items: center; gap: 22px; height: 56px; font-size: 14px; }
+nav .me { font-weight: 700; letter-spacing: .08em; display: flex; align-items: center; gap: 8px; text-decoration: none; }
+nav .me i { width: 9px; height: 9px; border-radius: 50%; background: var(--dot); display: inline-block; }
+nav .links { display: flex; gap: 18px; margin-left: auto; }
+nav .links a { text-decoration: none; color: var(--ink-2); }
+nav .links a:hover { color: var(--ink); }
+header { padding: 96px 0 72px; }
+.eyebrow { font-size: 13px; letter-spacing: .14em; color: var(--ink-3); text-transform: uppercase; margin: 0 0 18px; }
+h1 { font-size: clamp(34px, 6vw, 58px); line-height: 1.15; margin: 0 0 22px; letter-spacing: -.01em; }
+h1 em { font-style: normal; position: relative; white-space: nowrap; }
+h1 em { box-shadow: inset 0 -.18em 0 color-mix(in srgb, var(--dot) 28%, transparent); }
+.lead { font-size: 18px; color: var(--ink-2); max-width: 660px; margin: 0 0 30px; }
+.stats { display: flex; flex-wrap: wrap; gap: 12px 36px; margin: 0 0 34px; padding: 0; list-style: none; }
+.stats b { display: block; font-size: 28px; line-height: 1.2; font-variant-numeric: tabular-nums; }
+.stats span { font-size: 13px; color: var(--ink-3); }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; height: 42px; padding: 0 18px; border-radius: 8px; font-size: 15px; text-decoration: none; border: 1px solid var(--ink); }
+.btn.primary { background: var(--ink); color: var(--paper); }
+.btn:not(.primary) { background: var(--card); }
+section { padding: 64px 0; border-top: 1px solid var(--hair); }
+h2 { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 30px; font-weight: 600; }
+.proj { display: grid; gap: 26px; margin-bottom: 72px; }
+.proj:last-child { margin-bottom: 0; }
+.proj h3 { font-size: 28px; line-height: 1.3; margin: 0; }
+.proj h3 small { display: block; font-size: 15px; font-weight: 400; color: var(--ink-3); margin-top: 6px; }
+.proj p { margin: 0; color: var(--ink-2); max-width: 720px; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.tags li { font-size: 12.5px; padding: 3px 10px; border-radius: 999px; background: var(--fog); color: var(--ink-2); }
+.shot { margin: 0; border: 1px solid var(--hair); border-radius: 12px; overflow: hidden; background: var(--card); box-shadow: 0 18px 50px -24px rgba(0,0,0,.28); }
+.shot img { display: block; width: 100%; height: auto; }
+.shot figcaption { font-size: 13px; color: var(--ink-3); padding: 10px 14px; border-top: 1px solid var(--hair); }
+.shots { display: grid; grid-template-columns: 1fr; gap: 22px; }
+.feats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 0; padding: 0; list-style: none; }
+.feats li { background: var(--card); border: 1px solid var(--hair); border-radius: 10px; padding: 16px 18px; }
+.feats b { display: block; margin-bottom: 4px; }
+.feats span { font-size: 14.5px; color: var(--ink-2); }
+.meta { display: flex; flex-wrap: wrap; gap: 10px 22px; font-size: 14px; color: var(--ink-3); }
+.meta a { color: var(--ink); }
+.small-proj { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.card { background: var(--card); border: 1px solid var(--hair); border-radius: 12px; padding: 24px; display: grid; gap: 14px; align-content: start; }
+.card h3 { font-size: 21px; margin: 0; }
+.card p { margin: 0; color: var(--ink-2); font-size: 15px; }
+table { width: 100%; border-collapse: collapse; font-size: 15px; }
+td { padding: 14px 0; border-bottom: 1px solid var(--hair); vertical-align: top; }
+td:last-child { text-align: right; white-space: nowrap; padding-left: 16px; color: var(--ink-3); font-size: 14px; }
+td .ok { color: var(--ink); }
+td .ok::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #2f8f5b; margin-right: 7px; vertical-align: 2px; }
+.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+.skills h4 { margin: 0 0 8px; font-size: 15px; }
+.skills p { margin: 0; color: var(--ink-2); font-size: 14.5px; }
+footer { padding: 56px 0 72px; border-top: 1px solid var(--hair); }
+footer h2 { margin-bottom: 14px; }
+footer p { margin: 0 0 22px; color: var(--ink-2); }
+.fine { font-size: 13px; color: var(--ink-3); margin-top: 40px; }
+.theme { margin-left: 8px; background: none; border: 1px solid var(--hair); color: var(--ink-2); width: 32px; height: 32px; border-radius: 8px; cursor: pointer; font-size: 15px; }
+@media (max-width: 720px) {
+  .wrap { padding: 0 16px; }
+  nav .links { display: none; }
+  nav .theme { margin-left: auto; }
+  header { padding: 56px 0 48px; }
+  .shots, .small-proj, .feats { grid-template-columns: 1fr; }
+  section { padding: 48px 0; }
+  .proj h3 { font-size: 24px; }
+  td:last-child { white-space: normal; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a class="me" href="#top"><i></i>ZHOU</a>
+    <div class="links">
+      <a href="#projects">项目</a>
+      <a href="#oss">开源贡献</a>
+      <a href="#skills">技能</a>
+      <a href="#contact">联系</a>
+    </div>
+    <button class="theme" id="theme" aria-label="切换深浅色">◐</button>
+  </div>
+</nav>
+
+<main class="wrap" id="top">
+  <header>
+    <p class="eyebrow">AI 应用开发 · 开发者工具</p>
+    <h1>做让多个 AI 模型<br><em>协同干活</em>的工具</h1>
+    <p class="lead">我用 TypeScript 和 Node.js 把 Claude Code、Codex、DeepSeek 这些 AI 编程工具接在一起：额度用完自动换人接力，多个模型匿名投票、交叉评审，弱模型干活、强模型把关。</p>
+    <ul class="stats">
+      <li><b>2.5 万行</b><span>接力台源码（TS / JS）</span></li>
+      <li><b>191 + 25</b><span>两个项目的自动化测试</span></li>
+      <li><b>3</b><span>独立项目</span></li>
+      <li><b>2</b><span>已合并的开源 PR</span></li>
+    </ul>
+    <div class="cta">
+      <a class="btn primary" href="#projects">看项目</a>
+      <a class="btn" href="https://github.com/zhousun55-byte">GitHub 主页 ↗</a>
+    </div>
+  </header>
+
+  <section id="projects">
+    <h2>代表项目</h2>
+
+    <article class="proj">
+      <h3>RelayDesk · 接力台<small>多模型编程协作平台 · 独立设计与开发</small></h3>
+      <p>用 AI 写代码时，额度会用完，模型会卡住，说「做完了」也没法核实。接力台把一次开发拆成一棒一棒：一个 AI 停下，下一个带着交接单接着做；每一棒都有文件快照，可以复核，也可以退回。</p>
+      <div class="shots">
+        <figure class="shot"><img src="assets/relay.png" alt="接力台的接力页：任务清单和两棒交接记录" loading="lazy"><figcaption>接力页：任务清单打勾进度，每一棒谁做的、改了什么、待不待复核</figcaption></figure>
+        <figure class="shot"><img src="assets/vote.png" alt="接力台的群聊投票：三个方案的票数和主席汇总" loading="lazy"><figcaption>群聊投票：方案匿名互投，强模型当主席写汇总，采纳后写进任务约定</figcaption></figure>
+      </div>
+      <ul class="feats">
+        <li><b>换 Agent 继续</b><span>读取 Claude Code / Codex 的本地会话，还原对话主线，带着上下文交给另一个模型接手</span></li>
+        <li><b>强弱模型分工</b><span>强模型拆任务、弱模型执行、强模型复核；额度用完自动换人，失败一键退回快照</span></li>
+        <li><b>群聊决策</b><span>多个模型匿名出方案、互投（不能投自己），主席汇总后写进约定，之后每一棒都遵守</span></li>
+        <li><b>安全设计</b><span>项目内容按不可信处理：检查命令需本机确认、拒绝符号链接越界写入、发给模型前抹掉密钥</span></li>
+      </ul>
+      <ul class="tags"><li>TypeScript</li><li>Node.js</li><li>本地 HTTP 服务</li><li>原生 JS 网页</li><li>Git 快照</li><li>中英双语</li></ul>
+      <div class="meta"><span>源码私有，面试可现场演示</span><a href="https://github.com/zhousun55-byte/zhousun55-byte/blob/main/projects/relaydesk.md">设计与实现说明 ↗</a><span>截图为演示数据</span></div>
+    </article>
+
+    <div class="small-proj">
+      <article class="card">
+        <h3>council · 多模型会审插件</h3>
+        <p>给 magpie 写的 MCP 工具：几个模型同问一个问题、匿名投票，或请另一家的模型评审代码。零配置，每个模型走自己的原生接口；按故障类型自动冷却、慢模型自动找替身。</p>
+        <ul class="tags"><li>JavaScript</li><li>MCP</li><li>Bun 测试 25 项</li><li>CI</li></ul>
+        <div class="meta"><a href="https://github.com/zhousun55-byte/magpie-council">源码 ↗</a><a href="https://github.com/magpie-community/plugins/pull/646">上游 PR #646 ↗</a></div>
+      </article>
+      <article class="card">
+        <h3>dsh-postman · 文件投递插件</h3>
+        <p>在 DeepSeek Harness 会话里选文件或文件夹：图片走原生消息附件，文本提取预览写进草稿，其他文件给出路径。已被两份生态目录收录。</p>
+        <ul class="tags"><li>JavaScript</li><li>Node.js</li><li>浏览器扩展接口</li></ul>
+        <div class="meta"><a href="https://github.com/zhousun55-byte/dsh-postman">源码 ↗</a></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="oss">
+    <h2>开源贡献</h2>
+    <table>
+      <tr><td><a href="https://github.com/magpie-community/plugins/pull/646">magpie-community/plugins #646</a><br>council 多模型插件：并行提问、匿名投票、交叉评审</td><td>评审中</td></tr>
+      <tr><td><a href="https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/pull/1153">awesome-dsh-plugin #1153</a><br>收录 dsh-postman</td><td><span class="ok">已合并</span></td></tr>
+      <tr><td><a href="https://github.com/0xsline/awesome-deepseek-harness/pull/308">awesome-deepseek-harness #308</a><br>收录 dsh-postman</td><td><span class="ok">已合并</span></td></tr>
+    </table>
+  </section>
+
+  <section id="skills">
+    <h2>技能</h2>
+    <div class="skills">
+      <div><h4>LLM 应用</h4><p>多模型调度与降级、Agent 会话解析与接续、提示词设计、模型投票与交叉评审、MCP 工具开发</p></div>
+      <div><h4>工程</h4><p>TypeScript、Node.js、本地 HTTP 服务、命令行工具、Git 快照、原生 JavaScript / CSS 前端</p></div>
+      <div><h4>质量与安全</h4><p>假工具驱动的集成测试、变异检查、不可信输入处理、密钥脱敏、路径与链接越界防护</p></div>
+      <div><h4>工具链</h4><p>Claude Code、Codex、DeepSeek Harness、magpie、GitHub Actions、Bun</p></div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <h2>联系</h2>
+    <p>正在寻找 AI 应用开发 / AI 工具开发岗位。欢迎通过 GitHub 联系我，也可以约时间现场演示接力台。</p>
+    <div class="cta"><a class="btn primary" href="https://github.com/zhousun55-byte">GitHub @zhousun55-byte ↗</a></div>
+    <p class="fine">© 2026 ZHOU</p>
+  </footer>
+</main>
+<script>
+(function () {
+  var root = document.documentElement, key = 'theme';
+  try { var saved = localStorage.getItem(key); if (saved) root.dataset.theme = saved; } catch (e) {}
+  document.getElementById('theme').addEventListener('click', function () {
+    var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    root.dataset.theme = dark ? 'light' : 'dark';
+    try { localStorage.setItem(key, root.dataset.theme); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>
