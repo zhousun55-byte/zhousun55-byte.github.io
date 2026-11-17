@@ -137,9 +137,9 @@ footer p { margin: 0 0 22px; color: var(--ink-2); }
 
 <main class="wrap" id="top">
   <header>
-    <p class="eyebrow">AI 应用开发 · 作品集</p>
+    <p class="eyebrow">AI 应用开发 · AI 产品 · AI 工作流</p>
     <h1>把模型当成<br><em>一个团队</em>来用</h1>
-    <p class="lead">2026 年 7 月以来，我和 Claude Code、Codex、Kimi 等 AI 工具一起做了 9 个项目：多模型协作平台、MCP 插件、交易读盘指标、知识库问答、模型评测，也有给摄影师做的网站。我负责把问题想清楚、写出能验收的标准、决定哪一步交给哪个模型，最后用测试和对照实验确认结果靠得住。</p>
+    <p class="lead">2026 年 7 月以来，和 Claude Code、Codex、Kimi 等 AI 工具一起做了 9 个项目。我负责把问题想清楚、定验收标准、给每一步挑合适的模型，再用测试和对照实验确认结果可靠。</p>
     <ul class="stats">
       <li><b>9</b><span>个项目</span></li>
       <li><b>900+</b><span>次提交</span></li>
@@ -157,7 +157,7 @@ footer p { margin: 0 0 22px; color: var(--ink-2); }
     <ol class="approach">
       <li><b>按长处分工</b><span>强模型做规划和复核，便宜的模型照着执行；拿不准的决定，让几家模型匿名各出方案、互相投票。接力台和 council 都是从这个想法长出来的。</span></li>
       <li><b>给对上下文</b><span>模型看到什么，就会答成什么样。知识库问答按定位表只读相关的一到三页，不把整个库塞进去；换一个模型接手时，带交接单和对话主线，不带全部历史。</span></li>
-      <li><b>不轻信「做完了」</b><span>每个项目都配能自动跑的验收。接力台有 191 项测试，安全相关的改动逐处做变异检查；K线阅读用体检脚本核对说明文档里的每个参数和代码是否一致。</span></li>
+      <li><b>不轻信「做完了」</b><span>每个项目都配能自动跑的验收。接力台有 191 项测试，安全相关的改动逐处做变异检查；K线阅读用校验脚本核对说明文档里的每个参数是否和代码一致。</span></li>
       <li><b>先测再选</b><span>选模型之前，先用自己的真实数据做一个小基准：固定随机种子，去掉会泄露答案的字段，结果能复现再下结论。</span></li>
       <li><b>守住边界</b><span>密钥只记环境变量名，发给模型前先脱敏；隐私数据只在本机处理，交给模型的只有统计结果。</span></li>
     </ol>
@@ -168,7 +168,7 @@ footer p { margin: 0 0 22px; color: var(--ink-2); }
 
     <h3 class="group-title">多模型协作</h3>
     <article class="proj">
-      <h3>RelayDesk · 接力台<small>多模型编程协作平台 · 2026.10 至今</small></h3>
+      <h3>RelayDesk · 接力台<small>多模型编程协作平台 · 2026.09 至今</small></h3>
       <p>用 AI 写代码，额度会用完，模型会卡住，它说「做完了」也没法核实。接力台把一次开发拆成一棒一棒：一个模型停下，下一个带着交接单接着做；每一棒都留文件快照，可以复核，也可以退回。</p>
       <div class="shots">
         <figure class="shot"><img src="assets/relay.png" alt="接力台的接力页：任务清单和两棒交接记录" loading="lazy"><figcaption>接力页：任务清单进度，每一棒谁做的、改了什么、是否待复核</figcaption></figure>
@@ -197,15 +197,15 @@ footer p { margin: 0 0 22px; color: var(--ink-2); }
     <div class="cards">
       <article class="card">
         <h3>K线阅读<small>TradingView 读盘指标 · 2026.09 至今</small></h3>
-        <p>按 Al Brooks 价格行为学把图表读成一张面板：大级别谁在控制、现在是趋势还是区间、有什么形态、刚收盘那根说明什么，以及止损、止盈和仓位。AI 写的说明文档很容易和代码对不上，所以配了十几个体检脚本，自动核对文档里的参数、默认值和资源占用；另有脚本通过 Chrome DevTools 协议驱动 TradingView 逐根回放验证。</p>
-        <div class="num">681 次提交 · Pine 脚本 2983 行 · 15 个校验脚本</div>
+        <p>按 Al Brooks 价格行为学把图表读成一张面板，回答大级别谁在控制、现在是趋势还是区间，再给出止损止盈和仓位。AI 写的说明文档容易和代码对不上，所以配了十几个校验脚本，自动核对文档里的参数和默认值；另有脚本通过 Chrome DevTools 协议驱动 TradingView 逐根回放验证。</p>
+        <div class="num">680+ 次提交 · Pine 脚本 2983 行</div>
         <ul class="tags"><li>Pine Script</li><li>Python</li><li>Chrome DevTools 协议</li></ul>
         <div class="meta"><span>私有项目</span><span>技术分析工具，不构成投资建议</span></div>
       </article>
       <article class="card">
         <h3>交易知识库与问答技能<small>Obsidian + Claude Code Skills · 2026.07 至今</small></h3>
         <p>把交易书籍、课程和学术研究整理成知识库，每条结论标注证据等级（从 A 硬实证到 D 已证伪）。在库上写了两个技能：一个按问题直接定位到对应的一到三页再回答，需要时联网核验；一个定期检查收录的 YouTube 和 B 站来源有没有新内容，列出候选，由我决定收不收。</p>
-        <div class="num">243 次提交 · 证据分 A–D 四级</div>
+        <div class="num">240+ 次提交 · 证据分 A–D 四级</div>
         <ul class="tags"><li>Obsidian</li><li>Claude Code Skills</li><li>检索设计</li><li>Python</li></ul>
         <div class="meta"><span>私有项目</span></div>
       </article>
@@ -216,7 +216,7 @@ footer p { margin: 0 0 22px; color: var(--ink-2); }
       <article class="card">
         <h3>Jev 中文判别基准<small>模型评测 · 2026.09</small></h3>
         <p>想用 TypeSafe 的 Jev 小模型给知识库自动归类，先测它的中文能力。标准答案直接取自人工整理好的目录结构；喂给模型的只有正文，因为文件名里带着作者名，等于送答案。</p>
-        <div class="num">57 篇真实笔记：四大类归类 81%，区分「讲人」还是「讲概念」96%</div>
+        <div class="num">57 篇真实笔记：四大类归类准确率 81%，区分讲人还是讲概念 96%</div>
         <ul class="tags"><li>Python</li><li>评测设计</li><li>结构化输出</li></ul>
         <div class="meta"><span>私有项目</span></div>
       </article>
@@ -239,7 +239,7 @@ footer p { margin: 0 0 22px; color: var(--ink-2); }
       </article>
       <article class="card">
         <h3>摄影作品集网站<small>婚礼摄影师网站 · 2026.09</small></h3>
-        <p>给婚礼摄影师做的咨询用网站，让客户快速看风格、建立信任、发起咨询。为了国内访问，图片和字体全部本地化，去掉了 Google Fonts 依赖；附交付文档和一键打包脚本。</p>
+        <p>给婚礼摄影师做的咨询用网站，让客户先看风格、建立信任，再发起咨询。为了国内访问，图片和字体全部本地化，去掉了 Google Fonts 依赖；附交付文档和一键打包脚本。</p>
         <ul class="tags"><li>React</li><li>TypeScript</li><li>Vite</li><li>GSAP</li><li>Kimi</li></ul>
         <div class="meta"><span>演示版，摄影师信息不公开</span></div>
       </article>
@@ -257,8 +257,8 @@ footer p { margin: 0 0 22px; color: var(--ink-2); }
     <ol class="timeline">
       <li><time>2026.07</time><span>个人语料蒸馏；交易知识库开建</span></li>
       <li><time>2026.08</time><span>dsh-postman 发布，被两份生态目录收录</span></li>
-      <li><time>2026.09</time><span>K线阅读开工；摄影作品集网站；Jev 中文评测；Cursor 中文化整合</span></li>
-      <li><time>2026.10–11</time><span>接力台；council 拆成独立仓库，提交到上游</span></li>
+      <li><time>2026.09</time><span>接力台和 K线阅读开工；同月做了摄影作品集网站、Jev 中文评测和 Cursor 中文化整合</span></li>
+      <li><time>2026.11</time><span>council 拆成独立仓库并提交上游；接力台加入换模型继续和群聊汇总</span></li>
     </ol>
   </section>
 
@@ -283,7 +283,7 @@ footer p { margin: 0 0 22px; color: var(--ink-2); }
 
   <footer id="contact">
     <h2>联系</h2>
-    <p>正在找 AI 应用开发、AI 工具开发方向的工作。可以在 GitHub 上联系我，也可以约时间现场演示接力台。</p>
+    <p>正在找 AI 应用开发、AI 产品和 AI 工作流方向的工作。可以在 GitHub 上联系我，也可以约时间现场演示接力台。</p>
     <div class="cta"><a class="btn primary" href="https://github.com/zhousun55-byte">GitHub @zhousun55-byte ↗</a></div>
     <p class="fine">© 2026 ZHOU</p>
   </footer>
